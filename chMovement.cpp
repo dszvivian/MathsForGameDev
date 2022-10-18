@@ -1,4 +1,5 @@
 #include <iostream>
+using namespace std;
 #include <math.h> 
 
 class Vector{
@@ -9,7 +10,41 @@ class Vector{
     float length() const ;
     float lengthsqr() const;
 
+
+    Vector(){}
+
+    Vector(float X, float Y){
+        x = X;
+        y = Y;
+    }
+
+
+    Vector operator*(float s) const;
+    Vector operator/(float s) const;
+
 };
+
+Vector Vector::operator*(float s) const{
+
+    Vector scaled ;
+
+    scaled.x = x * s;
+    scaled.y = y * s;
+
+    return scaled;
+
+}
+
+Vector Vector::operator/(float s) const{
+
+    Vector scaled ;
+
+    scaled.x = x / s;
+    scaled.y = y / s;
+
+    return scaled;
+
+}
 
 float Vector::length() const {
     float length ;
@@ -79,6 +114,22 @@ int main(){
 
     std::cout<<"Results AB : "<< lengthAB<<std::endl;
     std::cout<<"Results AC: "<< lengthAC <<std::endl;
+
+
+
+    // code for increasing or decreasing the speed
+
+    Vector v(3,0);
+
+    cout<<"Initial Vector :"<<v.length()<<endl;
+
+    Vector doubled = v *2 ;
+
+    cout<<"Doubled Vector :"<<doubled.length()<<endl;
+
+    Vector halfed = v/2;
+
+    cout<<"Halfed Vector :"<<halfed.length()<<endl;
 
 }
 
